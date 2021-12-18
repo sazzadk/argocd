@@ -4,17 +4,17 @@ metadata:
   name: myapp-argo-application
   namespace: default
 spec:
-  project: wordpress
+  project: default
   source:
-    repoURL: https://github.com/sazzadk/argocd.git
-    targetRevision: HEAD
+    repoURL: 'https://github.com/sazzadk/argocd.git'
     path: deployments
-  destination: 
-    server: https://kubernetes.default.svc
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
     namespace: default
   syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
     automated:
-      selfHeal: true
       prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
